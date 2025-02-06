@@ -65,8 +65,10 @@ function capitalizarNombre(str) {
 }
 
 function actualizarLista() {
-  imprimirAmigos.innerHTML = listaAmigos.map(amigo => `<li>${amigo}</li>`).join('');
-  console.log(`Lista actualizada: ${listaAmigos.join(', ')}`);
+  imprimirAmigos.innerHTML = listaAmigos
+    .map((amigo) => `<li>${amigo}</li>`)
+    .join("");
+  console.log(`Lista actualizada: ${listaAmigos.join(", ")}`);
 }
 
 function sortearAmigo() {
@@ -79,25 +81,3 @@ function sortearAmigo() {
     console.error("No hay nombres en la lista de amigos.");
   }
 }
-
-
-// Básico: Dado un array de números, crea un nuevo array con cada número multiplicado por 2.
-const dobleDeNumeros = [1, 2, 3, 4, 5];
-console.log(dobleDeNumeros.map(n => n * 2));
-
-// Intermedio: Dado un array de objetos que representan personas, crea un nuevo array con solo los nombres de las personas.
-const personas = [
-  { nombre: "Ana", edad: 28 },
-  { nombre: "Carlos", edad: 32 },
-  { nombre: "Elena", edad: 25 }
-];
-console.log(personas.map(persona => persona.nombre));
-
-// Avanzado: Dado un array de strings, crea un nuevo array donde cada string esté capitalizado (primera letra en mayúscula) y se muestre su longitud.
-const palabras = ["javascript", "programación", "desarrollo"];
-
-// Experto: Dado un array de números, crea un nuevo array donde cada número sea reemplazado por un objeto que muestre el número original, su cuadrado y su raíz cuadrada.
-const numeros2 = [4, 9, 16, 25];
-
-// Maestro: Dado un array de frases, crea un nuevo array donde cada frase esté invertida palabra por palabra, manteniendo el orden de las palabras.
-const frases = ["Hola mundo", "JavaScript es genial", "Programar es divertido"];
