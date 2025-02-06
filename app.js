@@ -6,6 +6,7 @@ const listaAmigos = [];
 const nuevoNombre = document.querySelector("#amigo");
 const imprimirAmigos = document.querySelector("#listaAmigos");
 const imprimirSorteado = document.querySelector("#resultado");
+const botonSortear = document.querySelector("#botonSortearAmigo");
 
 // Constantes para mensajes de error
 const ERROR_NOMBRE_VACIO = "Por favor, inserte un nombre.";
@@ -24,6 +25,8 @@ function agregarAmigo() {
     actualizarLista();
     nuevoNombre.value = "";
     nuevoNombre.focus();
+    botonSortear.disabled = false;
+    botonSortear.style.backgroundColor = "#fe652b";
   }
 }
 
@@ -80,4 +83,8 @@ function sortearAmigo() {
     alert("No hay nombres en la lista de amigos.");
     console.error("No hay nombres en la lista de amigos.");
   }
+}
+
+function reiniciarJuego() {
+  location.reload();
 }
