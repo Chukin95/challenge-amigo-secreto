@@ -1,9 +1,5 @@
-# challenge-amigo-secreto
-```markdown
 # Comandos Git 😎
-
 ---
-
 ## 1. Configuración Inicial 🔧
 
 ### Configurar Usuario
@@ -337,8 +333,3 @@ git config --global user.email <email>
    ```bash
    git push -u origin main
    ```
-
----
-```
-
-Solo copia y pega este contenido en tu `readme.md` y tendrás toda la información organizada, con emojis y listo para usar. ¡Disfrútalo!
