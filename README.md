@@ -236,8 +236,6 @@ git config --global user.email <email>
   ```bash
   git clone -b <nombre_de_la_rama> <repositorio-url>
   ```  
-  *Nota: la opción correcta es `-b` y no `-branch`.*
-
 ---
 
 ## 8. Visualización del Historial (Log) 📜
