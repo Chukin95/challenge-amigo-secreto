@@ -1,6 +1,4 @@
 # challenge-amigo-secreto
-Aquí tienes el contenido listo para copiar y pegar directamente en tu archivo `readme.md`:
-
 ```markdown
 # Comandos Git 😎
 
