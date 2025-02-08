@@ -90,18 +90,12 @@
   ```  
   *Guarda los cambios con un mensaje descriptivo.*
 
-### Envío (Push) y Descarga (Pull)
+### Envío (Push)
 - **Enviar cambios a la rama remota**  
   ```bash
   git push -u origin <nombre_de_la_rama>
   ```  
   *Sube los commits a la rama especificada (por defecto, a la rama `master` o `main`).*
-
-- **Descargar cambios del repositorio remoto**  
-  ```bash
-  git pull
-  ```  
-  *Actualiza el repositorio local con los cambios remotos.*
 
 ### Recuperación y Restauración
 - **Restaurar cambios en un archivo específico**  
@@ -126,6 +120,12 @@
   ```  
   *Consulta el repositorio remoto para ver nuevos cambios sin integrarlos.*
 
+- **Descargar cambios del repositorio remoto**  
+  ```bash
+  git pull
+  ```  
+  *Actualiza el repositorio local con los cambios remotos.*
+  
 - **Flujo básico en equipo:**  
   1. ```bash
      git add .
