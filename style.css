@@ -144,7 +144,34 @@ li {
 }
 
 li span {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
+}
+
+.icono {
+  margin-left: 1rem;
+  color: grey;
+  margin-right: 2rem;
+}
+
+.icono:hover {
+  color: orange;
+  cursor: pointer;
+  transition: color 0.3s;
+  transform: scale(1.2);
+  transition-timing-function: ease-in-out;
+  transition-delay: 0.2s;
+  transition-property: color, transform;
+  transition-duration: 0.3s;
+}
+
+.icono:active {
+  color:red;
+  transform: scale(1.5);
+  transition: color 0.3s;
+  transition-duration: 0.3s;
+  transition-delay: 0.1s;
+  transition-property: color, transform;
+  transition-timing-function: ease-in-out;
 }
 
 .result-list {

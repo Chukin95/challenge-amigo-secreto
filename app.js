@@ -1,6 +1,6 @@
 // Variables globales
 const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/; // Expresión regular para permitir solo letras y espacios
-const listaAmigos = [];
+let listaAmigos = [];
 
 // Elementos HTML
 const nuevoNombre = document.querySelector("#amigo");
@@ -67,9 +67,27 @@ function capitalizarNombre(str) {
     .join(" ");
 }
 
+function quitarAmigo(amigo) {
+  let resultado = confirm(`¿Estás seguro de eliminar a ${amigo}?`);
+  if (resultado) {
+    listaAmigos = listaAmigos.filter((a) => a !== amigo);
+    actualizarLista();
+    console.log(`Amigo eliminado: ${amigo}`);
+    console.log(`Lista actualizada: ${listaAmigos.join(", ")}`);
+
+    if (listaAmigos.length === 0) {
+      botonSortear.disabled = true;
+      botonSortear.style.backgroundColor = "gray";
+    }
+  }
+}
+
 function actualizarLista() {
   imprimirAmigos.innerHTML = listaAmigos
-    .map((amigo) => `<li><img src="https://api.dicebear.com/9.x/adventurer-neutral/svg?radius=50&seed=${amigo}&size=32"> <span> ${amigo}</span></li>`)
+    .map(
+      (amigo) =>
+        `<li><img src="https://api.dicebear.com/9.x/adventurer-neutral/svg?radius=50&seed=${amigo}&size=32"> <span> ${amigo}</span> <i class="icono fa fa-trash fa-1x" aria-hidden="true" onclick="quitarAmigo('${amigo}')"></i></li>`
+    )
     .join("");
   console.log(`Lista actualizada: ${listaAmigos.join(", ")}`);
 }
