@@ -69,7 +69,7 @@ function capitalizarNombre(str) {
 
 function actualizarLista() {
   imprimirAmigos.innerHTML = listaAmigos
-    .map((amigo) => `<li>${amigo}</li>`)
+    .map((amigo) => `<li><img src="https://api.dicebear.com/9.x/adventurer-neutral/svg?radius=50&seed=${amigo}&size=32"> <span> ${amigo}</span></li>`)
     .join("");
   console.log(`Lista actualizada: ${listaAmigos.join(", ")}`);
 }

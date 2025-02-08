@@ -136,6 +136,17 @@ ul {
   margin: 20px 0;
 }
 
+li {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+li span {
+  margin-left: 0.5rem;
+}
+
 .result-list {
   margin-top: 15px;
   color: #05df05;
