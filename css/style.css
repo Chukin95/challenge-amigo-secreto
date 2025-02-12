@@ -1,3 +1,4 @@
+/* Colores en variables */
 :root {
   --color-primary: #4b69fd;
   --color-secondary: #fff9eb;
@@ -124,7 +125,7 @@ button {
 }
 
 .button-add:hover {
-  background-color: #a1a1a1;
+  color: var(--color-white);
 }
 
 /* Listas */
