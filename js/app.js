@@ -44,6 +44,7 @@ function agregarAmigo() {
     botonSortear.disabled = false;
     botonSortear.style.backgroundColor = "#fe652b";
     botonAgregar.style.backgroundColor = "#c4c4c4";
+    actualizarEstadoBoton();
   }
 }
 
@@ -114,7 +115,7 @@ function actualizarLista() {
 }
 
 function sortearAmigo() {
-  if (listaAmigos.length > 0) {
+  if (listaAmigos.length > 1) {
     const amigoSorteado = Math.floor(Math.random() * listaAmigos.length);
     imprimirSorteado.innerHTML = `Tu amigo secreto es: ${listaAmigos[amigoSorteado]}`;
     mostrarAlerta(
@@ -124,6 +125,9 @@ function sortearAmigo() {
     );
     console.log(`Tu amigo secreto es: ${listaAmigos[amigoSorteado]}`);
     mostrarConfetti();
+  } else if (listaAmigos.length === 1) {
+    mostrarAlerta("Debe tener al menos 2 amigos para sortear.");
+    console.error("Debe tener al menos 2 amigos para sortear.");
   } else {
     mostrarAlerta("No hay nombres en la lista de amigos.");
     console.error("No hay nombres en la lista de amigos.");
@@ -137,8 +141,12 @@ function actualizarEstadoBoton() {
     !listaAmigos.includes(capitalizarNombre(nuevoNombre.value))
   ) {
     botonAgregar.style.backgroundColor = "#4CdF50";
+    botonAgregar.classList.add('entrada-valida');
+    nuevoNombre.classList.add('entrada-valida');
   } else {
-    botonAgregar.style.backgroundColor = "#c4c4c4";
+    botonAgregar.style.backgroundColor = "#C4C4C4";
+    botonAgregar.classList.remove('entrada-valida');
+    nuevoNombre.classList.remove('entrada-valida');
   }
 }
 

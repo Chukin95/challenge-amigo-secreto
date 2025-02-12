@@ -202,3 +202,9 @@ li span {
 .button-draw:hover {
   background-color: var(--color-button-hover);
 }
+
+.entrada-valida {
+  box-shadow: 1px 1px 5px #4CdF50,
+              1px 1px 5px #4CdF50 inset;
+  border-color: #4CdF50;
+}
