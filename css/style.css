@@ -51,6 +51,9 @@ body {
   align-items: center;
   padding: 20px;
   width: 100%;
+  min-height: 30rem; /* Ajusta este valor según sea necesario */
+  position: relative;
+  z-index: 1;
 }
 
 /* Títulos */

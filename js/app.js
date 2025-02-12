@@ -188,3 +188,6 @@ function mostrarConfetti() {
 function reiniciarJuego() {
   location.reload();
 }
+
+console.log(18 == '018'); // true
+console.log(15 == '017'); // false
