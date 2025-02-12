@@ -3,11 +3,13 @@ const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/; // Expresión regular para
 let listaAmigos = [];
 
 // Elementos HTML
-const nuevoNombre = document.querySelector("#nuevoNombreAmigo");
-const imprimirAmigos = document.querySelector("#listaAmigos");
-const imprimirSorteado = document.querySelector("#resultado");
-const botonAgregar = document.querySelector("#botonAgregarAmigo");
-const botonSortear = document.querySelector("#botonSortearAmigo");
+const nuevoNombre = document.getElementById('nuevoNombreAmigo');
+const imprimirAmigos = document.getElementById('listaAmigos');
+const imprimirSorteado = document.getElementById('resultado');
+const botonAgregar = document.getElementById('botonAgregarAmigo');
+const botonSortear = document.getElementById('botonSortearAmigo');
+const botonAlternarSonido = document.getElementById('alternarSonido');
+const videoYoutube = document.getElementById('videoYoutube');
 
 // Constantes para mensajes de error
 const ERROR_NOMBRE_VACIO = "Por favor, inserte un nombre.";
@@ -30,6 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
         sortearAmigo();
       }
     });
+  botonAlternarSonido.addEventListener('click', function() {
+      if (videoYoutube.src.includes('mute=1')) {
+          videoYoutube.src = videoYoutube.src.replace('mute=1', 'mute=0');
+          botonAlternarSonido.innerHTML = '<i class="fas fa-volume-up"></i>';
+      } else {
+          videoYoutube.src = videoYoutube.src.replace('mute=0', 'mute=1');
+          botonAlternarSonido.innerHTML = '<i class="fas fa-volume-mute"></i>';
+      }
+  });
 });
 
 // Funciones
@@ -188,18 +199,3 @@ function mostrarConfetti() {
 function reiniciarJuego() {
   location.reload();
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-const toggleSoundButton = document.getElementById('toggleSound');
-const backgroundVideo = document.getElementById('backgroundVideo');
-
-toggleSoundButton.addEventListener('click', function() {
-    if (backgroundVideo.src.includes('mute=1')) {
-        backgroundVideo.src = backgroundVideo.src.replace('mute=1', 'mute=0');
-        toggleSoundButton.innerHTML = '<i class="fas fa-volume-up"></i>';
-    } else {
-        backgroundVideo.src = backgroundVideo.src.replace('mute=0', 'mute=1');
-        toggleSoundButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
-    }
-});
-});
