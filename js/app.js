@@ -189,5 +189,17 @@ function reiniciarJuego() {
   location.reload();
 }
 
-console.log(18 == '018'); // true
-console.log(15 == '017'); // false
+document.addEventListener('DOMContentLoaded', function() {
+const toggleSoundButton = document.getElementById('toggleSound');
+const backgroundVideo = document.getElementById('backgroundVideo');
+
+toggleSoundButton.addEventListener('click', function() {
+    if (backgroundVideo.src.includes('mute=1')) {
+        backgroundVideo.src = backgroundVideo.src.replace('mute=1', 'mute=0');
+        toggleSoundButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+    } else {
+        backgroundVideo.src = backgroundVideo.src.replace('mute=0', 'mute=1');
+        toggleSoundButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    }
+});
+});
