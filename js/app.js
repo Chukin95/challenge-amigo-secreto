@@ -3,13 +3,13 @@ const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/; // Expresión regular para
 let listaAmigos = [];
 
 // Elementos HTML
-const nuevoNombre = document.getElementById('nuevoNombreAmigo');
-const imprimirAmigos = document.getElementById('listaAmigos');
-const imprimirSorteado = document.getElementById('resultado');
-const botonAgregar = document.getElementById('botonAgregarAmigo');
-const botonSortear = document.getElementById('botonSortearAmigo');
-const botonAlternarSonido = document.getElementById('alternarSonido');
-const videoYoutube = document.getElementById('videoYoutube');
+const nuevoNombre = document.getElementById("nuevoNombreAmigo");
+const imprimirAmigos = document.getElementById("listaAmigos");
+const imprimirSorteado = document.getElementById("resultado");
+const botonAgregar = document.getElementById("botonAgregarAmigo");
+const botonSortear = document.getElementById("botonSortearAmigo");
+const botonAlternarSonido = document.getElementById("alternarSonido");
+const videoYoutube = document.getElementById("videoYoutube");
 
 // Constantes para mensajes de error
 const ERROR_NOMBRE_VACIO = "Por favor, inserte un nombre.";
@@ -32,23 +32,24 @@ document.addEventListener("DOMContentLoaded", function () {
         sortearAmigo();
       }
     });
-  botonAlternarSonido.addEventListener('click', function() {
-      if (videoYoutube.src.includes('mute=1')) {
-          videoYoutube.src = videoYoutube.src.replace('mute=1', 'mute=0');
-          botonAlternarSonido.innerHTML = '<i class="fas fa-volume-up"></i>';
-      } else {
-          videoYoutube.src = videoYoutube.src.replace('mute=0', 'mute=1');
-          botonAlternarSonido.innerHTML = '<i class="fas fa-volume-mute"></i>';
-      }
+  botonAlternarSonido.addEventListener("click", function () {
+    if (videoYoutube.src.includes("mute=1")) {
+      videoYoutube.src = videoYoutube.src.replace("mute=1", "mute=0");
+      botonAlternarSonido.innerHTML = '<i class="fas fa-volume-up"></i>';
+    } else {
+      videoYoutube.src = videoYoutube.src.replace("mute=0", "mute=1");
+      botonAlternarSonido.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    }
   });
 });
 
 // Funciones
 function agregarAmigo() {
+  let inputNombre = nuevoNombre.value.trim();
   console.log("Agregando amigo...");
-  if (verificarNombre(nuevoNombre.value)) {
+  if (verificarNombre(inputNombre)) {
     console.log("Paso la verificacion nombre.");
-    listaAmigos.push(capitalizarNombre(nuevoNombre.value));
+    listaAmigos.push(capitalizarNombre(inputNombre));
     actualizarLista();
     nuevoNombre.focus();
     nuevoNombre.value = "";
@@ -60,7 +61,7 @@ function agregarAmigo() {
 }
 
 function verificarNombre(nombre) {
-  if (nombre.trim() === "") {
+  if (nombre === "") {
     mostrarAlerta(ERROR_NOMBRE_VACIO);
     console.error(ERROR_NOMBRE_VACIO);
     return false;
@@ -97,7 +98,9 @@ function capitalizarNombre(str) {
 }
 
 async function quitarAmigo(amigo) {
-  let resultado = await pedirConfirmacion(`¿Estás seguro de eliminar a ${amigo}?`);
+  let resultado = await pedirConfirmacion(
+    `¿Estás seguro de eliminar a ${amigo}?`
+  );
   if (resultado.isConfirmed) {
     listaAmigos = listaAmigos.filter((a) => a !== amigo);
     actualizarLista();
@@ -146,18 +149,19 @@ function sortearAmigo() {
 }
 
 function actualizarEstadoBoton() {
+  let inputNombre = nuevoNombre.value.trim();
   if (
-    nuevoNombre.value.length >= 3 &&
-    regex.test(nuevoNombre.value) &&
-    !listaAmigos.includes(capitalizarNombre(nuevoNombre.value))
+    inputNombre.length >= 3 &&
+    regex.test(inputNombre) &&
+    !listaAmigos.includes(capitalizarNombre(inputNombre))
   ) {
     botonAgregar.style.backgroundColor = "#4CdF50";
-    botonAgregar.classList.add('entrada-valida');
-    nuevoNombre.classList.add('entrada-valida');
+    botonAgregar.classList.add("entrada-valida");
+    nuevoNombre.classList.add("entrada-valida");
   } else {
     botonAgregar.style.backgroundColor = "#C4C4C4";
-    botonAgregar.classList.remove('entrada-valida');
-    nuevoNombre.classList.remove('entrada-valida');
+    botonAgregar.classList.remove("entrada-valida");
+    nuevoNombre.classList.remove("entrada-valida");
   }
 }
 
