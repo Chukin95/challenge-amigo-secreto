@@ -17,28 +17,32 @@
 }
 
 body {
-  height: 100vh;
   background-color: var(--color-primary);
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 
 
 /* Banner */
 .header-banner {
-  flex: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 0 0;
-  background-color: rgba(255,255,255,0.1);
+  flex-direction: column;
+  background-color: var(--color-primary);
+  width: 100%;
+  padding: 20px 0;
 }
 
 /* Sección de entrada */
 .input-section {
-  flex: 60%;
+  flex: 1;
   background-color: var(--color-secondary);
   border: 1px solid #000;
   border-radius: 64px 64px 0 0;
@@ -47,9 +51,10 @@ body {
   align-items: center;
   padding: 20px;
   width: 100%;
-  min-height: 30rem; /* Ajusta este valor según sea necesario */
+  min-height: 30rem;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 /* Títulos */
@@ -129,11 +134,16 @@ button {
 
 /* Listas */
 ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
   list-style-type: none;
   color: var(--color-text);
   font-family: "Inter", sans-serif;
   font-size: 18px;
   margin: 20px 0;
+  width: 400px;
 }
 
 li {
@@ -230,9 +240,11 @@ li span {
 }
 
 .main-content {
-  position: relative;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.8); /* Ajusta la opacidad según sea necesario */
+  width: 100%;
+  max-width: 100%; /* Ajusta este valor según tus necesidades */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sound-toggle {
