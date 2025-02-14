@@ -135,22 +135,28 @@ button {
 /* Listas */
 ul {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: column;
   list-style-type: none;
   color: var(--color-text);
   font-family: "Inter", sans-serif;
   font-size: 18px;
   margin: 20px 0;
-  width: 400px;
+  width: 25rem;
+  gap: 0.5rem;
 }
 
 li {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   margin: 0.5rem 0;
+  border-radius: 5rem;
+  background-color: burlywood;
+  padding: 10px;
+  width: 400px;
+  gap: 10px;
 }
 
 li span {
@@ -159,12 +165,12 @@ li span {
 
 .icono {
   margin-left: 1rem;
-  color: grey;
+  color: black;
   margin-right: 2rem;
 }
 
 .icono:hover {
-  color: orange;
+  color: red;
   cursor: pointer;
   transition: color 0.3s;
   transform: scale(1.2);
@@ -172,16 +178,6 @@ li span {
   transition-delay: 0.2s;
   transition-property: color, transform;
   transition-duration: 0.3s;
-}
-
-.icono:active {
-  color:red;
-  transform: scale(1.5);
-  transition: color 0.3s;
-  transition-duration: 0.3s;
-  transition-delay: 0.1s;
-  transition-property: color, transform;
-  transition-timing-function: ease-in-out;
 }
 
 .result-list {
