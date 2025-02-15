@@ -1,6 +1,7 @@
 // Variables globales
 const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/; // Expresión regular para permitir solo letras y espacios
 let listaAmigos = [];
+let temaOscuro = false;
 
 // Elementos HTML
 const nuevoNombre = document.getElementById("nuevoNombreAmigo");
@@ -10,6 +11,7 @@ const botonAgregar = document.getElementById("botonAgregarAmigo");
 const botonSortear = document.getElementById("botonSortearAmigo");
 const botonAlternarSonido = document.getElementById("alternarSonido");
 const videoYoutube = document.getElementById("videoYoutube");
+const botonAlternarTema = document.getElementById("alternarTema");
 
 // Constantes para mensajes de error
 const ERROR_NOMBRE_VACIO = "Por favor, inserte un nombre.";
@@ -41,6 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
       botonAlternarSonido.innerHTML = '<i class="fas fa-volume-mute"></i>';
     }
   });
+  botonAlternarTema.addEventListener("click", alternarTema);
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+      botonAlternarTema.innerHTML = '<i class="fas fa-moon"></i>';
+      temaOscuro = true;
+  }
 });
 
 // Funciones
@@ -118,7 +127,7 @@ function actualizarLista() {
   imprimirAmigos.innerHTML = listaAmigos
     .map(
       (amigo) =>
-        ` <li class="animate__animated animate__rubberBand">
+        ` <li class="animate__animated animate__rubberBand" data-amigo="${amigo}">
             <img src="https://api.dicebear.com/9.x/adventurer-neutral/svg?radius=50&seed=${amigo}&size=32" alt="Avatar de ${amigo}">
             <span> ${amigo}</span>
             <i class="icono fa fa-trash fa-1x" aria-hidden="true" onclick="quitarAmigo('${amigo}')"></i>
@@ -198,6 +207,19 @@ function mostrarConfetti() {
       "#ff8f4f",
     ],
   });
+}
+
+function alternarTema() {
+  temaOscuro = !temaOscuro;
+  document.body.classList.toggle('dark-theme');
+
+  if (temaOscuro) {
+      botonAlternarTema.innerHTML = '<i class="fas fa-moon"></i>';
+      localStorage.setItem('theme', 'dark');
+  } else {
+      botonAlternarTema.innerHTML = '<i class="fas fa-sun"></i>';
+      localStorage.setItem('theme', 'light');
+  }
 }
 
 function reiniciarJuego() {

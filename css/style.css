@@ -264,3 +264,97 @@ li span {
 .sound-toggle:hover {
   background: rgba(0, 0, 0, 0.7);
 }
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(25, 25, 25, 0.6);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background: rgba(25, 25, 25, 0.9);
+}
+
+/* Dark theme styles */
+body.dark-theme .header-banner {
+  background: none;
+}
+
+body.dark-theme .header-banner h1 {
+  color: #ffffff;
+}
+
+body.dark-theme .input-section h2 {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+body.dark-theme .input-section {
+  background-color: rgba(0, 0, 0, 0.477);
+}
+
+body.dark-theme .input-section ul li span {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+body.dark-theme .input-section input[type="text"] {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .input-section .button-add {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-theme {
+  background-color: rgba(18, 18, 18, 0.8);
+  color: white;
+}
+
+body.dark-theme .main-content {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-theme .input-name,
+body.dark-theme .button-add,
+body.dark-theme .button-draw {
+  background-color: #333;
+  color: #ffffff;
+}
+
+body.dark-theme .button-draw:not(:disabled) {
+  background-color: #fe652b;
+}
+
+body.dark-theme .input-name::placeholder {
+  color: #aaa;
+}
+
+body.dark-theme li {
+  background-color: #333;
+}
+
+body.dark-theme .icono:hover {
+  color: #ff4d4d;
+}
+
+body.dark-theme .theme-toggle {
+  background-color: #222;
+  color: #bbb;
+}
+
+body.dark-theme .theme-toggle:hover {
+  background: rgba(25, 25, 25, 0.5);
+}
