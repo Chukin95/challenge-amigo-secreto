@@ -44,21 +44,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
   botonAlternarTema.addEventListener("click", alternarTema);
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-      document.body.classList.add('dark-theme');
-      botonAlternarTema.innerHTML = '<i class="fas fa-moon"></i>';
-      temaOscuro = true;
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-theme");
+    botonAlternarTema.innerHTML = '<i class="fas fa-moon"></i>';
+    temaOscuro = true;
   }
 });
 
 // Funciones
 function agregarAmigo() {
-  let inputNombre = nuevoNombre.value.trim();
-  console.log("Agregando amigo...");
-  if (verificarNombre(inputNombre)) {
-    console.log("Paso la verificacion nombre.");
-    listaAmigos.push(capitalizarNombre(inputNombre));
+  const nombre = nuevoNombre.value.trim();
+  const genero = document.getElementById("generoAmigo").value;
+  const resultado = verificarNombre(nombre);
+
+  if (resultado === true) {
+    const nombreCapitalizado = capitalizarNombre(nombre);
+    listaAmigos.push({ nombre: nombreCapitalizado, genero: genero });
+    nuevoNombre.value = "";
     actualizarLista();
     nuevoNombre.focus();
     nuevoNombre.value = "";
@@ -66,6 +69,12 @@ function agregarAmigo() {
     botonSortear.style.backgroundColor = "#fe652b";
     botonAgregar.style.backgroundColor = "#c4c4c4";
     actualizarEstadoBoton();
+    console.log(`Amigo agregado: ${nombreCapitalizado} (${genero})`);
+    console.log(
+      `Lista actualizada: ${listaAmigos.map((a) => a.nombre).join(", ")}`
+    );
+  } else {
+    mostrarAlerta(resultado, "error");
   }
 }
 
@@ -106,15 +115,17 @@ function capitalizarNombre(str) {
     .join(" ");
 }
 
-async function quitarAmigo(amigo) {
+async function quitarAmigo(nombre) {
   let resultado = await pedirConfirmacion(
-    `¿Estás seguro de eliminar a ${amigo}?`
+    `¿Estás seguro de eliminar a ${nombre}?`
   );
   if (resultado.isConfirmed) {
-    listaAmigos = listaAmigos.filter((a) => a !== amigo);
+    listaAmigos = listaAmigos.filter((a) => a.nombre !== nombre);
     actualizarLista();
-    console.log(`Amigo eliminado: ${amigo}`);
-    console.log(`Lista actualizada: ${listaAmigos.join(", ")}`);
+    console.log(`Amigo eliminado: ${nombre}`);
+    console.log(
+      `Lista actualizada: ${listaAmigos.map((a) => a.nombre).join(", ")}`
+    );
 
     if (listaAmigos.length === 0) {
       botonSortear.disabled = true;
@@ -125,28 +136,49 @@ async function quitarAmigo(amigo) {
 
 function actualizarLista() {
   imprimirAmigos.innerHTML = listaAmigos
-    .map(
-      (amigo) =>
-        ` <li class="animate__animated animate__rubberBand" data-amigo="${amigo}">
-            <img src="https://api.dicebear.com/9.x/adventurer-neutral/svg?radius=50&seed=${amigo}&size=32" alt="Avatar de ${amigo}">
-            <span> ${amigo}</span>
-            <i class="icono fa fa-trash fa-1x" aria-hidden="true" onclick="quitarAmigo('${amigo}')"></i>
-          </li>`
-    )
+    .map((amigo, index) => {
+      const isFirst = index === 0;
+      const isLast = index === listaAmigos.length - 1;
+      return `
+        <div class="amigo-container">
+          <img src="https://api.dicebear.com/9.x/adventurer-neutral/svg?radius=50&seed=${
+            amigo.nombre
+          }&size=64" alt="Avatar de ${amigo.nombre}" class="avatar">
+          <div class="body ${amigo.genero}"></div>
+          <div class="name">${amigo.nombre}</div>
+          <button class="delete-btn" onclick="quitarAmigo('${amigo.nombre}')">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+          ${
+            !isLast
+              ? '<div class="hand-right"></div>'
+              : '<div class="hand-right down"></div>'
+          }
+          ${
+            !isFirst
+              ? '<div class="hand-left"></div>'
+              : '<div class="hand-left down"></div>'
+          }
+          <div class="legs ${amigo.genero}"></div>
+          ${amigo.genero === "female" ? '<div class="skirt"></div>' : ""}
+        </div>`;
+    })
     .join("");
-  console.log(`Lista actualizada: ${listaAmigos.join(", ")}`);
+  console.log(
+    `Lista actualizada: ${listaAmigos.map((a) => a.nombre).join(", ")}`
+  );
 }
 
 function sortearAmigo() {
   if (listaAmigos.length > 1) {
     const amigoSorteado = Math.floor(Math.random() * listaAmigos.length);
-    imprimirSorteado.innerHTML = `Tu amigo secreto es: ${listaAmigos[amigoSorteado]}`;
+    imprimirSorteado.innerHTML = `Tu amigo secreto es: ${listaAmigos[amigoSorteado].nombre}`;
     mostrarAlerta(
       `Tu amigo secreto es:
       ${listaAmigos[amigoSorteado]}`,
       "success"
     );
-    console.log(`Tu amigo secreto es: ${listaAmigos[amigoSorteado]}`);
+    console.log(`Tu amigo secreto es: ${listaAmigos[amigoSorteado].nombre}`);
     mostrarConfetti();
   } else if (listaAmigos.length === 1) {
     mostrarAlerta("Debe tener al menos 2 amigos para sortear.");
@@ -211,14 +243,14 @@ function mostrarConfetti() {
 
 function alternarTema() {
   temaOscuro = !temaOscuro;
-  document.body.classList.toggle('dark-theme');
+  document.body.classList.toggle("dark-theme");
 
   if (temaOscuro) {
-      botonAlternarTema.innerHTML = '<i class="fas fa-moon"></i>';
-      localStorage.setItem('theme', 'dark');
+    botonAlternarTema.innerHTML = '<i class="fas fa-moon"></i>';
+    localStorage.setItem("theme", "dark");
   } else {
-      botonAlternarTema.innerHTML = '<i class="fas fa-sun"></i>';
-      localStorage.setItem('theme', 'light');
+    botonAlternarTema.innerHTML = '<i class="fas fa-sun"></i>';
+    localStorage.setItem("theme", "light");
   }
 }
 

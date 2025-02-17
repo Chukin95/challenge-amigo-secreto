@@ -27,8 +27,6 @@ body {
   padding: 0;
 }
 
-
-
 /* Banner */
 .header-banner {
   display: flex;
@@ -42,19 +40,306 @@ body {
 
 /* Sección de entrada */
 .input-section {
-  flex: 1;
-  background-color: var(--color-secondary);
-  border: 1px solid #000;
-  border-radius: 64px 64px 0 0;
+  padding: 50px 0;
+  border-radius: 5% 5% 0 0;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.amigos-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   padding: 20px;
   width: 100%;
-  min-height: 30rem;
+}
+
+.amigo-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  height: 150px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #4cdf50;
+  background-color: #fff;
+  z-index: 2;
+}
+
+.body {
+  position: absolute;
+  top: 50px;
+  width: 40px;
+  height: 60px;
+  background-color: #fe652b;
+  border-radius: 0 0 20px 20px;
+}
+
+.body.male {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 60% 100%, 40% 100%, 0 80%);
+}
+
+.body.female {
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+}
+
+.name {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  text-align: center;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.hand-right,
+.hand-left {
+  position: absolute;
+  width: 30px;
+  height: 10px;
+  background-color: #fe652b;
+  top: 70px;
   z-index: 1;
-  box-sizing: border-box;
+}
+
+.hand-right {
+  right: -15px;
+  transform: rotate(-20deg);
+  border-radius: 0 5px 5px 0;
+}
+
+.hand-left {
+  left: -15px;
+  transform: rotate(20deg);
+  border-radius: 5px 0 0 5px;
+}
+
+/* Estilos para el tema oscuro */
+body.dark-theme .avatar {
+  border-color: #4cdf50;
+}
+
+body.dark-theme .body,
+body.dark-theme .hand-right,
+body.dark-theme .hand-left {
+  background-color: #4cdf50;
+}
+
+.amigo-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  height: 180px; /* Aumentado para acomodar las piernas */
+}
+
+.body {
+  position: absolute;
+  top: 50px;
+  width: 40px;
+  height: 60px;
+  background-color: #fe652b;
+  border-radius: 0 0 20px 20px;
+}
+
+.body.male {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 60% 100%, 40% 100%, 0 80%);
+}
+
+.body.female {
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+}
+
+.legs {
+  position: absolute;
+  top: 110px;
+  width: 40px;
+  height: 40px;
+  background-color: #ff69b4;
+}
+
+.legs.male {
+  clip-path: polygon(
+    0 0,
+    40% 0,
+    40% 100%,
+    60% 100%,
+    60% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.legs.female {
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+}
+
+.skirt {
+  position: absolute;
+  top: 100px;
+  width: 50px;
+  height: 30px;
+  background-color: #ff9f80;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 2;
+}
+
+.hand-right,
+.hand-left {
+  position: absolute;
+  width: 30px;
+  height: 10px;
+  background-color: #ff9f7d;
+  top: 70px;
+  z-index: 1;
+}
+
+.hand-right {
+  right: -15px;
+  transform: rotate(-20deg);
+  border-radius: 0 5px 5px 0;
+}
+
+.hand-left {
+  left: -15px;
+  transform: rotate(20deg);
+  border-radius: 5px 0 0 5px;
+}
+
+.hand-right.down {
+  transform: rotate(60deg);
+  right: -5px;
+  top: 80px;
+}
+
+.hand-left.down {
+  transform: rotate(-60deg);
+  left: -5px;
+  top: 80px;
+}
+
+/* Estilos para el tema oscuro */
+body.dark-theme .body,
+body.dark-theme .hand-right,
+body.dark-theme .hand-left {
+  background-color: #ff9f7d;
+}
+body.dark-theme .legs {
+  background-color: #ff69b4;
+}
+
+body.dark-theme .skirt {
+  background-color: #ff69b4;
+}
+.body {
+  position: absolute;
+  top: 50px;
+  width: 40px;
+  height: 60px;
+  border-radius: 0 0 20px 20px;
+}
+
+.body.male {
+  background-color: #87cefa; /* Celeste para varones */
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 60% 100%, 40% 100%, 0 80%);
+}
+
+.body.female {
+  background-color: #ff69b4; /* Rosa para mujeres */
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+}
+
+.legs {
+  position: absolute;
+  top: 115px; /* Ajustado para estar más pegado al cuerpo */
+  width: 30px;
+  height: 40px;
+}
+
+.legs.male {
+  background-color: #87cefa; /* Azul más oscuro para pantalones */
+  clip-path: polygon(
+    0 0,
+    40% 0,
+    40% 100%,
+    60% 100%,
+    60% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.skirt {
+  position: absolute;
+  top: 70px; /* Ajustado para estar más pegado al cuerpo */
+  width: 60px;
+  height: 60px;
+  background-color: #ff69b4; /* Rosa más oscuro para la falda */
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 2;
+}
+
+/* Ajustes para el tema oscuro */
+body.dark-theme .body.male {
+  background-color: #4682b4; /* Azul acero para varones en tema oscuro */
+}
+
+body.dark-theme .body.female {
+  background-color: #ff69b4; /* Rosa pálido para mujeres en tema oscuro */
+}
+
+body.dark-theme .legs.male {
+  background-color: #4682b4; /* Azul marino para pantalones en tema oscuro */
+}
+
+body.dark-theme .skirt {
+  background-color: #ff69b4; /* Magenta medio para falda en tema oscuro */
+}
+
+.gender-select {
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 0;
+  font-size: 16px;
+  background-color: var(--color-tertiary);
+  color: var(--color-text);
+}
+
+body.dark-theme .gender-select {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Títulos */
@@ -113,7 +398,6 @@ body {
 
 /* Estilos de botón */
 button {
-  padding: 15px 30px;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   border: 2px solid #000;
@@ -125,6 +409,7 @@ button {
 .button-add {
   background-color: var(--color-tertiary);
   color: var(--color-text);
+  padding: 15px 30px;
   border-radius: 0 25px 25px 0;
 }
 
@@ -209,11 +494,9 @@ li span {
 }
 
 .entrada-valida {
-  box-shadow: 1px 1px 5px #4CdF50,
-              1px 1px 5px #4CdF50 inset;
-  border-color: #4CdF50;
+  box-shadow: 1px 1px 5px #4cdf50, 1px 1px 5px #4cdf50 inset;
+  border-color: #4cdf50;
 }
-
 
 #video-background {
   position: fixed;
