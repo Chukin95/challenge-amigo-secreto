@@ -175,7 +175,7 @@ function sortearAmigo() {
     imprimirSorteado.innerHTML = `Tu amigo secreto es: ${listaAmigos[amigoSorteado].nombre}`;
     mostrarAlerta(
       `Tu amigo secreto es:
-      ${listaAmigos[amigoSorteado]}`,
+      ${listaAmigos[amigoSorteado].nombre}`,
       "success"
     );
     console.log(`Tu amigo secreto es: ${listaAmigos[amigoSorteado].nombre}`);
