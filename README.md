@@ -46,7 +46,7 @@ Para obtener una copia local en funcionamiento, sigue estos sencillos pasos:
 5. Una vez que todos los participantes estén añadidos, haz clic en "Sortear amigo" para asignar los Amigos Secretos
 6. ¡Disfruta de los resultados y del ambiente festivo!
 
-![Demo de Uso](https://chukin95.github.io/challenge-amigo-secreto/)
+[Demo de Uso](https://chukin95.github.io/challenge-amigo-secreto/)
 
 ## 🤝 Contribuir
 
